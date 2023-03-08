@@ -18,6 +18,9 @@ connection, address = socket.accept()
 print("Conexion establecida dese:", address)
 
 while True:
-    data = connection.recv(1024)
-    print("Algo ha llegado")
-    ese
+    data = connection.recv(512)
+    if data:
+        print(("He recibido algo"))
+    else:
+        print ("La conexión se ha cortado")
+        break
