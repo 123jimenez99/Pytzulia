@@ -1,14 +1,14 @@
 import socket
 
-# Asignamos propiedades al socket
+# Asigna las propiedades del Socket
 host = "127.0.0.1"
 port = 65000
 
-# Creamos el socket
+# Crea el Socket
 socket = socket.socket()
 print("Socket creado correctamente")
 
-# Bindeamos y eschuchamos
+# Bindea las propiedades y empieza a eschuchar
 socket.bind((host, port))
 socket.listen(1)
 print ("Esperando conexiones entrantes...")
