@@ -1,5 +1,4 @@
 import socket
-import mysql.connector
 
 # Asignamos propiedades al socket
 host = "127.0.0.1"
