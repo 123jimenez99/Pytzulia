@@ -1,26 +1,25 @@
-import socket			
+import socket
 
-# el objeto de la función socket se va a llamar 's'
-socket = socket.socket()		
-print ("Socket successfully created")
+# Asigna las propiedades del Socket
+host = "127.0.0.1"
+port = 65000
 
-# Vamos a utilizar el puerto 65000
-port = 65000			
+# Crea el Socket
+socket = socket.socket()
+print("Socket creado correctamente")
 
-# Con la funcion bind, bindearemos el puerto de escucha
-socket.bind(('', port))		
-print ("socket binded to %s" %(port))
+# Bindea las propiedades y empieza a eschuchar
+socket.bind((host, port))
+socket.listen(1)
+print ("Esperando conexiones entrantes...")
 
-# Ponemos el socket en modo 'listening'
-socket.listen()	
-print ("socket is listening")		
+connection, address = socket.accept()
+print("Conexion establecida dese:", address)
 
-# Creamos un bucle infinito para que no pare hasta que se lo ordenemos
 while True:
-
-# Establecemos una conexión con el 
-    c, addr = socket.accept()	
-print ('Got connection from', addr )
-
-# Cerramos la conexion con el cliente
-c.close()
+    data = connection.recv(512)
+    if data:
+        print(data.decode())
+    else:
+        print ("La conexión se ha cortado")
+        break
