@@ -9,11 +9,10 @@ password="sanluis",
 database="test"
 )
 
-# Crea el cursor para poder acceder y manipular datos en la base de datos
+# Crea el cursor para poder acceder y manipular datos en la base de datos (Simulando que hemos pasado una tarjeta RFID)
 mycursor = mydb.cursor()
 
 # Crea la tabla en la que se van a pasar los datos de tiempo
-
 mycursor.execute("CREATE TABLE IF NOT EXISTS rfid_record (rfid VARCHAR(64), timestamp DATETIME(2))")
 
 # Comprueba continuamente si ha pasado una tarjeta RFID
