@@ -14,11 +14,8 @@ cursor = conn.cursor()
 # Consigue tiempo actual del sistema
 current_time = time.strftime('%Y-%m-%d %H:%M:%S')
 
-# Fomatear kernel_time a un formato legible para MicroPyton
-time_string = "{}/{}/{} {}:{}:{}".format(current_time[0], current_time[1], current_time[2], current_time[3], current_time[4], current_time[5])
-
 # Crea la tabla en la que se van a pasar los datos de tiempo
-cursor.execute("CREATE TABLE IF NOT EXISTS rfid_record (rfid VARCHAR(64), timestamp DATETIME(2))")
+cursor.execute("CREATE TABLE IF NOT EXISTS rfid_record")
 
 # Comprueba continuamente si ha pasado una tarjeta RFID
 while True:
@@ -26,7 +23,7 @@ while True:
 
 
 # Manda el tiempo actual del sistema a la base de datos
-    cursor.execute("INSERT INTO rfid_record (timestamp) VALUES (%s)", time_string)
+    cursor.execute("INSERT INTO rfid_record (timestamp) VALUES (%s)", current_time)
 
 # Notifica de que todo ha funcionado correctamente
     print("Datos escaneados y enviados correctamente")
